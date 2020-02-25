@@ -10,16 +10,40 @@ int main()
 {
     int m = 5, n = 5;
     Matrix b(3,4,3);
-    Matrix c{5,5,3};
+    Matrix c;
 
     Matrix a = {{-5, 5, -6, 1, 0}, {0, -5, 10, -3, 3}, {1, 11, 6, 1, 7}, {4, 5, -9, 9, -7}, {-5, 10, 0, -4, 4}};
-    Matrix d = {{1, 0, 2}, {2, 3, 7}};//, {-2, 2, 1, 7}, {-2, 3, 4, 1} };
-    Matrix e = {{4, 0}, {-2, -2} };
-    Matrix g = {{1, -1}, {2, 3} };
-    Matrix h = {{0, 2}, {1, 4} };
-    Matrix i = {{-1, 5}, {7, 1 } };
 
-    Matrix f = { {1, 4, 5, 0}, {2, 9, 5, 0}, {2, 9, 9, 0}, {-1, -4, -5, 0} };
+    cout << "The Matrix A:" << endl;
+    cout << a << endl;
+    cout << "The Determinant of Matrix A: " << a.determinant() << endl;
+
+    if(a.is_invertible())
+    {
+        cout << "The Inverse of Matrix A:" << endl;
+        cout << a.inverse() << endl;
+    }
+    else
+        cout << "The Matrix A is not Invertible" << endl;
+
+    cout << "The Transpose of Matrix A:" << endl;
+    cout << a.transpose() << endl;
+
+    Matrix x(5,5,4);
+
+    cout << "\nThe Matrx X:" << endl;
+    cout << x;
+
+    x *= a;
+
+    cout << "\nThe Matrx X After Multiplication:" << endl;
+    cout << x;
+
+    c = x * 4;
+
+    cout << "\nThe Matrx C:" << endl;
+    cout << c;
+
 
     //  cout << f.gaussJordanElimination();
 
@@ -31,33 +55,40 @@ int main()
     b(0,0) = 1;
     b(0,1) = 2;
 
-    //  cout << b.gaussElimination();
-    LA_Vector lav1 = {1, 2, -1};
-    LA_Vector lav2 = {6, 4, 2};
-    LA_Vector lav = {4, -1, 8};
+    cout << endl << "The Matrix B:" << endl;
+    cout << b;
+
+    cout << endl << "The Matrix After Being Applied the Gauss-Jordan Elimination:" << endl;
+    cout << b.gaussJordanElimination() << endl;
+
+    Matrix mx(4,4,4);
+
+    cout << mx.determinant() << endl;
+
+    for(int i = 0; i < m; ++i)
+        for(int j = 0; j < n; ++j)
+        {
+            int x;
+            cout << "Mx[" << i + 1 << "][" << j + 1 << "]: ";
+            cin >> x;
+
+            a(i,j) = {x};
+        }
+
+    cout << "The Matrix A:" << endl;
+    cout << a << endl;
 
 
-    /*
 
-    LA_Vector lav1 = {1, 2, -1};
-    LA_Vector lav2 = {6, 4, 2};
-    LA_Vector lav = {9, 2, 7};
-
-    LA_Vector lav1 = {1, 5, 3};
-    LA_Vector lav2 = {5, 6, -1};
-    LA_Vector lav = {3, 2, 1};
-    LA_Vector lav3 = {3, 2, 1};
-    */
+    c = Matrix::IDENTITY(m);
 
 
-    try
-    {
-        cout << is_linear_combination({ e, g, h }, i);
-    }
-    catch(exception& e)
-    {
-        cout << e.what();
-    }
-//cout << lav2 * (lav ->* lav1);
+    //  cout << a << endl;
+    //  cout << a.transpose();
+
+    //cout << a.transpose().determinant() << endl << endl;
+    //  cout << a.determinant();
+
+    //cout << c;
 
 }
