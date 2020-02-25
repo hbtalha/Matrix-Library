@@ -15,39 +15,11 @@ using namespace boost;
 
 int main()
 {
-    const int m = 5, n = 5;
-    Matrix a(m,n), b(3,4,3), c;
+    int m = 5, n = 5;
+    Matrix b(3,4,3);
+    Matrix c;
 
-    a(0,0) = {-5};
-    a(0,1) = {5};
-    a(0,2) = {-6};
-    a(0,3) = {-1};
-    a(0,4) = {0};
-
-    a(1,0) = {0};
-    a(1,1) = {-5};
-    a(1,2) = {10};
-    a(1,3) = {-3};
-    a(1,4) = {3};
-
-    a(2,0) = {1};
-    a(2,1) = {11};
-    a(2,2) = {6};
-    a(2,3) = {1};
-    a(2,4) = {7};
-
-    a(3,0) = {4};
-    a(3,1) = {5};
-    a(3,2) = {-9};
-    a(3,3) = {9};
-    a(3,4) = {-7};
-
-    a(4,0) = {-5};
-    a(4,1) = {10};
-    a(4,2) = {0};
-    a(4,3) = {-4};
-    a(4,4) = {4};
-
+    Matrix a = {{-5, 5, -6, 1, 0}, {0, -5, 10, -3, 3}, {1, 11, 6, 1, 7}, {4, 5, -9, 9, -7}, {-5, 10, 0, -4, 4}};
 
     cout << "The Matrix A:" << endl;
     cout << a << endl;
@@ -79,22 +51,24 @@ int main()
     cout << "\nThe Matrx C:" << endl;
     cout << c;
 
-   b(0,2) = {4};
-   b(1,2) = {5};
-   b(1,3) = {2};
-   b(2,0) = {-8};
-   b(2,3) = {9};
-   b(0,0) = {1};
-   b(0,1) = {2};
 
+    //  cout << f.gaussJordanElimination();
 
-   cout << endl << "The Matrix B:" << endl;
-   cout << b;
+    b(0,2) = 4;
+    b(1,2) = 5;
+    b(1,3) = 2;
+    b(2,0) = -8;
+    b(2,3) = 9;
+    b(0,0) = 1;
+    b(0,1) = 2;
 
-   cout << endl << "The Matrix After Being Applied the Gauss-Jordan Elimination:" << endl;
-   cout << b.gaussJordanElimination() << endl;
+    cout << endl << "The Matrix B:" << endl;
+    cout << b;
 
-   Matrix mx(4,4,4);
+    cout << endl << "The Matrix After Being Applied the Gauss-Jordan Elimination:" << endl;
+    cout << b.gaussJordanElimination() << endl;
+
+    Matrix mx(4,4,4);
 
     cout << mx.determinant() << endl;
 
@@ -102,13 +76,13 @@ int main()
         for(int j = 0; j < n; ++j)
         {
             int x;
-              cout << "Mx[" << i + 1 << "][" << j + 1 << "]: ";
-                cin >> x;
+            cout << "Mx[" << i + 1 << "][" << j + 1 << "]: ";
+            cin >> x;
 
-               a(i,j) = {x};
+            a(i,j) = {x};
         }
 
-        cout << "The Matrix A:" << endl;
+    cout << "The Matrix A:" << endl;
     cout << a << endl;
 
 
